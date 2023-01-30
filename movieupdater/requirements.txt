@@ -1,0 +1,4 @@
+boto3
+simplejson
+mysql-connector-python
+python-dotenv

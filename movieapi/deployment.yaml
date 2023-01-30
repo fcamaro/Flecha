@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movieapi
+  labels:
+    app: movieapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movieapi
+  template:
+    metadata:
+      labels:
+        app: movieapi
+    spec: 
+      containers: 
+      - name: movieapi
+        image: movieapi
+        imagePullPolicy: IfNotPresent      
+        ports:
+        - containerPort: 5000
+        env:           
+          - name: FLECHA_DBHOST
+            valueFrom:
+              secretKeyRef:
+              name: movieapi-secret
+              key: FLECHA_DBHOST
+          - name: FLECHA_DBNAME
+            valueFrom:
+              secretKeyRef:
+              name: movieapi-secret
+              key: FLECHA_DBNAME
+          - name: FLECHA_DBUSERNAME
+            valueFrom:
+              secretKeyRef:
+              name: movieapi-secret
+              key: FLECHA_DBUSERNAME    
+          - name: FLECHA_DBPASSWORD
+            valueFrom:
+              secretKeyRef:
+              name: movieapi-secret
+              key: FLECHA_DBPASSWORD           
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: movieapi-service
+spec:
+  selector:
+    app: movieapi
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 30000
