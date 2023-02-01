@@ -9,9 +9,9 @@ import os
 load_dotenv()
 
 #print("Starting work")
-#print("Bucket Access Key:", os.getenv("BUCKET_KEY"))
-#print("Bucket Secret Key:", os.getenv("BUCKET_SECRETKEY"))
-#print("Region:", os.getenv("BUCKET_S3REGION"))
+print("Bucket Access Key:", os.getenv("BUCKET_KEY"))
+print("Bucket Secret Key:", os.getenv("BUCKET_SECRETKEY"))
+print("Region:", os.getenv("BUCKET_S3REGION"))
 
 
 # Initialize a session using DigitalOcean Spaces.
@@ -51,7 +51,7 @@ for obj in objects["Contents"]:
                 host=os.getenv("FLECHA_DBHOST"),
                 user=os.getenv("FLECHA_DBUSERNAME"),
                 password=os.getenv("FLECHA_DBPASSWORD"),
-                database=os.getenv("movies")
+                database=os.getenv("FLECHA_DBNAME")
             )
 
             # Create a cursor

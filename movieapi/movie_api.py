@@ -14,6 +14,11 @@ def sanitize(param, type):
             sanitized_param =""   
     return sanitized_param
 
+
+@app.route("/", methods=["GET"])
+def helloworld():
+    return "hello"
+
 @app.route("/movies", methods=["GET"])
 def movies_search():
     return MovieAPI.movies_search(sanitize(request.args.get("id"),"int"),

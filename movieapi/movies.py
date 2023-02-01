@@ -6,6 +6,10 @@ import os
 # by default .env will be loaded
 load_dotenv()
 
+print("Starting work")
+print("DB Host:", os.getenv("FLECHA_DBHOST"))
+print("dbusername:", os.getenv("FLECHA_DBUSERNAME"))
+print("dbregion", os.getenv("FLECHA_DBNAME"))
 
 class MovieAPI:   
  def movies_search(id, title, year, genre, cast):
@@ -15,7 +19,7 @@ class MovieAPI:
             host=os.getenv("FLECHA_DBHOST"),
             user=os.getenv("FLECHA_DBUSERNAME"),
             password=os.getenv("FLECHA_DBPASSWORD"),
-            database=os.getenv("movies")
+            database=os.getenv("FLECHA_DBNAME")
         )
         # Create a cursor
         cursor = cnx.cursor(buffered=True)

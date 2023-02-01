@@ -24,23 +24,23 @@ spec:
           - name: FLECHA_DBHOST
             valueFrom:
               secretKeyRef:
-              name: movieapi-secret
-              key: FLECHA_DBHOST
+               name: movieapi-secret
+               key: FLECHA_DBHOST
           - name: FLECHA_DBNAME
             valueFrom:
               secretKeyRef:
-              name: movieapi-secret
-              key: FLECHA_DBNAME
+                name: movieapi-secret
+                key: FLECHA_DBNAME
           - name: FLECHA_DBUSERNAME
             valueFrom:
               secretKeyRef:
-              name: movieapi-secret
-              key: FLECHA_DBUSERNAME    
+                name: movieapi-secret
+                key: FLECHA_DBUSERNAME    
           - name: FLECHA_DBPASSWORD
             valueFrom:
-              secretKeyRef:
-              name: movieapi-secret
-              key: FLECHA_DBPASSWORD           
+              secretKeyRef: 
+                name: movieapi-secret
+                key: FLECHA_DBPASSWORD           
 ---
 apiVersion: v1
 kind: Service
